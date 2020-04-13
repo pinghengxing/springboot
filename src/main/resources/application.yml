@@ -75,21 +75,22 @@ spring:
 
 
 
+  ##redis集群配置(使用lettuce连接池，会出现连接失败问题，改为使用jedis)
   ##redis集群配置(使用lettuce连接池)
   redis:
     cluster:
       max-redirects: 3
       nodes: 140.143.26.129:1001,140.143.26.129:1002,140.143.26.129:1003,140.143.26.129:1004,140.143.26.129:1005,140.143.26.129:1006
-    lettuce:
+#    lettuce:
+    jedis:
       pool:
-        max-active: 1000 #连接池最大连接数（使用负值表示没有限制）
+        max-active: 10 #连接池最大连接数（使用负值表示没有限制）
         max-idle: 10 # 连接池中的最大空闲连接
         min-idle: 5 # 连接池中的最小空闲连接
         max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制）
     password: ww
     timeout: 3000ms
     database: 0
-
 
 
 
